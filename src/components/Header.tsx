@@ -133,25 +133,25 @@ export default function Header({ title, composition, coverResult, videoResult, v
             background: "var(--gold)", display: "flex",
             alignItems: "center", justifyContent: "center",
             fontSize: "14px",
-          }}>🎸</div>
+          }}>🎵</div>
           <div>
             <div style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: "14px", fontWeight: 600,
               color: "var(--text-primary)", letterSpacing: "0.02em",
-            }}>JAZZ FORGE</div>
+            }}>DISCO REGGAE FORGE</div>
             <div style={{
               fontSize: "10px", color: "var(--gold-dim)",
               letterSpacing: "0.12em", textTransform: "uppercase",
               marginTop: "-2px",
-            }}>AI Composition Suite</div>
+            }}>Riddim Production Suite</div>
           </div>
         </div>
         <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
           {hasContent && (
             <>
-              <button onClick={onClear} style={{ padding: "6px 14px", background: "transparent", border: "1px solid #3A3A42", borderRadius: "6px", color: "#888578", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
-                New Composition
+              <button onClick={onClear} style={{ padding: "6px 14px", background: "transparent", border: "1px solid var(--border)", borderRadius: "6px", color: "var(--text-muted)", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
+                New Riddim
               </button>
               {composition && (
                 <>
@@ -161,16 +161,16 @@ export default function Header({ title, composition, coverResult, videoResult, v
                   >
                     © Copyright
                   </button>
-                  <button onClick={openSuno} style={{ padding: "6px 14px", background: "#1A1508", border: "1px solid #C9A84C", borderRadius: "6px", color: "#E8C96A", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em", transition: "all 0.2s" }}>
+                  <button onClick={openSuno} style={{ padding: "6px 14px", background: "#1A1508", border: "1px solid var(--gold)", borderRadius: "6px", color: "var(--gold-soft)", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em", transition: "all 0.2s" }}>
                     Suno ↗
                   </button>
                 </>
               )}
-              <button onClick={() => exportAllTXT(title, composition, coverResult, videoResult)} style={{ padding: "6px 14px", background: "transparent", border: "1px solid #888578", borderRadius: "6px", color: "#F0EDE6", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
-                Export All TXT
+              <button onClick={() => exportAllTXT(title, composition, coverResult, videoResult)} style={{ padding: "6px 14px", background: "transparent", border: "1px solid var(--border)", borderRadius: "6px", color: "var(--text-primary)", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
+                Export TXT
               </button>
-              <button onClick={() => exportAllPDF(title, composition, coverResult, videoResult)} style={{ padding: "6px 14px", background: "var(--border-gold)", border: "1px solid var(--gold-dim)", borderRadius: "6px", color: "var(--gold-light)", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
-                Export All PDF
+              <button onClick={() => exportAllPDF(title, composition, coverResult, videoResult)} style={{ padding: "6px 14px", background: "transparent", border: "1px solid var(--gold-dim)", borderRadius: "6px", color: "var(--gold-soft)", fontSize: "12px", cursor: "pointer", letterSpacing: "0.04em" }}>
+                Export PDF
               </button>
             </>
           )}
@@ -189,7 +189,7 @@ export default function Header({ title, composition, coverResult, videoResult, v
           onClick={(e) => { if (e.target === e.currentTarget) setShowCopyright(false); }}
         >
           <div style={{
-            background: "#141418", border: "1px solid #8B4A6A",
+            background: "var(--bg-card)", border: "1px solid #8B4A6A",
             borderRadius: "12px", width: "100%", maxWidth: "520px",
             display: "flex", flexDirection: "column", overflow: "hidden",
           }}>
@@ -200,57 +200,31 @@ export default function Header({ title, composition, coverResult, videoResult, v
                   Timestamped authorship document for rights registration
                 </div>
               </div>
-              <button onClick={() => setShowCopyright(false)} style={{ background: "transparent", border: "1px solid #3A3A42", borderRadius: "6px", color: "#888578", fontSize: "12px", padding: "4px 10px", cursor: "pointer" }}>
+              <button onClick={() => setShowCopyright(false)} style={{ background: "transparent", border: "1px solid var(--border)", borderRadius: "6px", color: "var(--text-muted)", fontSize: "12px", padding: "4px 10px", cursor: "pointer" }}>
                 ✕
               </button>
             </div>
-
             <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "16px" }}>
-              <div style={{ padding: "12px 14px", background: "#1A0A14", border: "1px solid #8B4A6A", borderRadius: "8px", fontSize: "11px", color: "#C87AA0", lineHeight: 1.6 }}>
-                The document will include: title, style, timestamp, full composition text, lyrics, authorship declaration, and GEMA registration fields — ready for submission to your performing rights organization.
-              </div>
-
               <div>
-                <div style={{ fontSize: "10px", color: "#6A6860", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 500 }}>
-                  Author Name
-                </div>
+                <div style={{ fontSize: "10px", color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px", fontWeight: 500 }}>Author Name</div>
                 <input
                   type="text"
                   value={authorName}
                   onChange={e => setAuthorName(e.target.value)}
                   placeholder="Your full name"
-                  style={{
-                    width: "100%", padding: "10px 12px",
-                    background: "#1A1A1F", border: "1px solid #3A3A42",
-                    borderRadius: "8px", color: "#F0EDE6",
-                    fontSize: "13px", outline: "none",
-                    fontFamily: "'DM Sans', sans-serif",
-                    boxSizing: "border-box",
-                  }}
+                  style={{ width: "100%", padding: "10px 12px", background: "var(--bg-panel)", border: "1px solid var(--border)", borderRadius: "8px", color: "var(--text-primary)", fontSize: "13px", outline: "none", fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }}
                 />
               </div>
-
-              <div style={{ padding: "10px 14px", background: "#141418", border: "1px solid #2A2A30", borderRadius: "8px", fontSize: "11px", color: "#6A6860", lineHeight: 1.6 }}>
-                <strong style={{ color: "#888578" }}>Track:</strong> {title || "Untitled"}<br />
-                <strong style={{ color: "#888578" }}>Style:</strong> {style}<br />
-                <strong style={{ color: "#888578" }}>Language:</strong> {language}<br />
-                <strong style={{ color: "#888578" }}>Timestamp:</strong> {new Date().toLocaleString()}
+              <div style={{ padding: "10px 14px", background: "var(--bg-panel)", border: "1px solid var(--border)", borderRadius: "8px", fontSize: "11px", color: "var(--text-muted)", lineHeight: 1.6 }}>
+                <strong style={{ color: "var(--text-secondary)" }}>Track:</strong> {title || "Untitled"}<br />
+                <strong style={{ color: "var(--text-secondary)" }}>Style:</strong> {style}<br />
+                <strong style={{ color: "var(--text-secondary)" }}>Language:</strong> {language}<br />
+                <strong style={{ color: "var(--text-secondary)" }}>Timestamp:</strong> {new Date().toLocaleString()}
               </div>
-
               <button
                 onClick={handleCopyrightExport}
                 disabled={!authorName.trim()}
-                style={{
-                  width: "100%", padding: "11px",
-                  background: authorName.trim() ? "#1A0A14" : "#1A1A1F",
-                  border: `1px solid ${authorName.trim() ? "#8B4A6A" : "#2A2A30"}`,
-                  borderRadius: "8px",
-                  color: authorName.trim() ? "#C87AA0" : "#4A4840",
-                  fontSize: "13px", fontWeight: 500,
-                  cursor: authorName.trim() ? "pointer" : "not-allowed",
-                  letterSpacing: "0.04em", fontFamily: "'DM Sans', sans-serif",
-                  transition: "all 0.2s",
-                }}
+                style={{ width: "100%", padding: "11px", background: authorName.trim() ? "#1A0A14" : "var(--bg-card)", border: `1px solid ${authorName.trim() ? "#8B4A6A" : "var(--border)"}`, borderRadius: "8px", color: authorName.trim() ? "#C87AA0" : "var(--text-muted)", fontSize: "13px", fontWeight: 500, cursor: authorName.trim() ? "pointer" : "not-allowed", letterSpacing: "0.04em", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" }}
               >
                 Download Copyright Package TXT ↓
               </button>
@@ -265,70 +239,46 @@ export default function Header({ title, composition, coverResult, videoResult, v
           style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}
           onClick={(e) => { if (e.target === e.currentTarget) setShowSuno(false); }}
         >
-          <div style={{
-            background: "#141418", border: "1px solid var(--border)", borderRadius: "12px",
-            width: "100%", maxWidth: "720px", maxHeight: "90vh",
-            display: "flex", flexDirection: "column", overflow: "hidden",
-          }}>
+          <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "12px", width: "100%", maxWidth: "720px", maxHeight: "90vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
               <div>
                 <div style={{ fontSize: "14px", color: "var(--text-primary)", fontWeight: 600 }}>Suno Export</div>
                 <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "2px" }}>
-                  {showLengthSelector
-                    ? "Choose track length, then generate"
-                    : `Track: ${trackLength} · ${LENGTH_OPTIONS.find(o => o.id === trackLength)?.desc}${vocal ? ` · ${vocal}` : ""}`}
+                  {showLengthSelector ? "Choose track length, then generate" : `Track: ${trackLength} · ${LENGTH_OPTIONS.find(o => o.id === trackLength)?.desc}${vocal ? ` · ${vocal}` : ""}`}
                 </div>
               </div>
               <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
                 {!showLengthSelector && (
-                  <button onClick={() => { setShowLengthSelector(true); setSunoResult(""); }}
-                    style={{ fontSize: "11px", padding: "5px 12px", background: "#1A1A1F", border: "1px solid #3A3A42", borderRadius: "6px", color: "#888578", cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
+                  <button onClick={() => { setShowLengthSelector(true); setSunoResult(""); }} style={{ fontSize: "11px", padding: "5px 12px", background: "var(--bg-panel)", border: "1px solid var(--border)", borderRadius: "6px", color: "var(--text-muted)", cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
                     ← Length
                   </button>
                 )}
                 {sunoStyle && lyrics && (
-                  <button onClick={copyAll}
-                    style={{ fontSize: "11px", padding: "5px 12px", background: copied === "all" ? "#1A1508" : "#1A1A1F", border: `1px solid ${copied === "all" ? "#C9A84C" : "#3A3A42"}`, borderRadius: "6px", color: copied === "all" ? "#E8C96A" : "#888578", cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
+                  <button onClick={copyAll} style={{ fontSize: "11px", padding: "5px 12px", background: copied === "all" ? "#1A1508" : "var(--bg-panel)", border: `1px solid ${copied === "all" ? "var(--gold-dim)" : "var(--border)"}`, borderRadius: "6px", color: copied === "all" ? "var(--gold)" : "var(--text-muted)", cursor: "pointer", fontFamily: "'DM Sans', sans-serif" }}>
                     {copied === "all" ? "Copied ✓" : "Copy All"}
                   </button>
                 )}
-                <button onClick={() => setShowSuno(false)} style={{ background: "transparent", border: "1px solid #3A3A42", borderRadius: "6px", color: "#888578", fontSize: "12px", padding: "4px 10px", cursor: "pointer" }}>
+                <button onClick={() => setShowSuno(false)} style={{ background: "transparent", border: "1px solid var(--border)", borderRadius: "6px", color: "var(--text-muted)", fontSize: "12px", padding: "4px 10px", cursor: "pointer" }}>
                   ✕ Close
                 </button>
               </div>
             </div>
-
             {showLengthSelector && (
               <div style={{ padding: "20px", borderBottom: "1px solid var(--border)", flexShrink: 0 }}>
                 <div style={{ fontSize: "10px", color: "var(--gold-dim)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "12px" }}>Track Length</div>
                 <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
                   {LENGTH_OPTIONS.map(opt => (
-                    <button key={opt.id} onClick={() => setTrackLength(opt.id)} style={{
-                      flex: 1, padding: "12px",
-                      background: trackLength === opt.id ? "#1A1508" : "#1A1A1F",
-                      border: `1px solid ${trackLength === opt.id ? "#C9A84C" : "#2A2A30"}`,
-                      borderRadius: "8px",
-                      color: trackLength === opt.id ? "#E8C96A" : "#888578",
-                      cursor: "pointer", transition: "all 0.15s",
-                      fontFamily: "'DM Sans', sans-serif", textAlign: "center" as const,
-                    }}>
+                    <button key={opt.id} onClick={() => setTrackLength(opt.id)} style={{ flex: 1, padding: "12px", background: trackLength === opt.id ? "#1A1508" : "var(--bg-panel)", border: `1px solid ${trackLength === opt.id ? "var(--gold)" : "var(--border)"}`, borderRadius: "8px", color: trackLength === opt.id ? "var(--gold-soft)" : "var(--text-muted)", cursor: "pointer", transition: "all 0.15s", fontFamily: "'DM Sans', sans-serif", textAlign: "center" as const }}>
                       <div style={{ fontSize: "13px", fontWeight: 500 }}>{opt.label}</div>
                       <div style={{ fontSize: "11px", opacity: 0.7, marginTop: "3px" }}>{opt.desc}</div>
                     </button>
                   ))}
                 </div>
-                {vocal && (
-                  <div style={{ marginBottom: "12px", padding: "8px 12px", background: "#1A1508", border: "1px solid #C9A84C", borderRadius: "6px", fontSize: "11px", color: "#E8C96A" }}>
-                    🎤 Vocal: {vocal}
-                  </div>
-                )}
-                <button onClick={generateSuno} disabled={sunoLoading}
-                  style={{ width: "100%", padding: "11px", background: "#1A1508", border: "1px solid #C9A84C", borderRadius: "8px", color: "#E8C96A", fontSize: "13px", fontWeight: 500, cursor: "pointer", letterSpacing: "0.04em", fontFamily: "'DM Sans', sans-serif" }}>
+                <button onClick={generateSuno} disabled={sunoLoading} style={{ width: "100%", padding: "11px", background: "#1A1508", border: "1px solid var(--gold)", borderRadius: "8px", color: "var(--gold-soft)", fontSize: "13px", fontWeight: 500, cursor: "pointer", letterSpacing: "0.04em", fontFamily: "'DM Sans', sans-serif" }}>
                   Generate for Suno ↗
                 </button>
               </div>
             )}
-
             <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "16px 20px", display: "flex", flexDirection: "column", gap: "16px" }}>
               {sunoLoading && (
                 <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)", fontSize: "13px" }}>
@@ -339,7 +289,7 @@ export default function Header({ title, composition, coverResult, videoResult, v
                 <div style={{ border: "1px solid var(--border)", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
                   <div style={{ padding: "8px 14px", background: "var(--bg-secondary)", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: "10px", color: "var(--gold)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Block 1 — Style of Music</span>
-                    <button onClick={() => copy(sunoStyle, "style")} style={{ fontSize: "11px", padding: "3px 10px", background: copied === "style" ? "#1A1508" : "transparent", border: `1px solid ${copied === "style" ? "var(--gold-dim)" : "#888578"}`, borderRadius: "4px", color: copied === "style" ? "var(--gold)" : "#F0EDE6", cursor: "pointer" }}>
+                    <button onClick={() => copy(sunoStyle, "style")} style={{ fontSize: "11px", padding: "3px 10px", background: copied === "style" ? "#1A1508" : "transparent", border: `1px solid ${copied === "style" ? "var(--gold-dim)" : "var(--border)"}`, borderRadius: "4px", color: copied === "style" ? "var(--gold)" : "var(--text-primary)", cursor: "pointer" }}>
                       {copied === "style" ? "Copied ✓" : "Copy"}
                     </button>
                   </div>
@@ -352,7 +302,7 @@ export default function Header({ title, composition, coverResult, videoResult, v
                 <div style={{ border: "1px solid var(--border)", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
                   <div style={{ padding: "8px 14px", background: "var(--bg-secondary)", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: "10px", color: "var(--gold)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Block 2 — Lyrics</span>
-                    <button onClick={() => copy(lyrics, "lyrics")} style={{ fontSize: "11px", padding: "3px 10px", background: copied === "lyrics" ? "#1A1508" : "transparent", border: `1px solid ${copied === "lyrics" ? "var(--gold-dim)" : "#888578"}`, borderRadius: "4px", color: copied === "lyrics" ? "var(--gold)" : "#F0EDE6", cursor: "pointer" }}>
+                    <button onClick={() => copy(lyrics, "lyrics")} style={{ fontSize: "11px", padding: "3px 10px", background: copied === "lyrics" ? "#1A1508" : "transparent", border: `1px solid ${copied === "lyrics" ? "var(--gold-dim)" : "var(--border)"}`, borderRadius: "4px", color: copied === "lyrics" ? "var(--gold)" : "var(--text-primary)", cursor: "pointer" }}>
                       {copied === "lyrics" ? "Copied ✓" : "Copy"}
                     </button>
                   </div>
