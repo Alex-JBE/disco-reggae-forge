@@ -1,0 +1,315 @@
+████████████████████████████████████████████████████████████
+  COPYRIGHT REGISTRATION PACKAGE
+  Jazz Forge · AI Composition Suite
+████████████████████████████████████████████████████████████
+
+DOCUMENT ID:     RF-1778877249326
+TIMESTAMP (UTC): 2026-05-15T20:34:09.325Z
+DATE:            15 May 2026 at 21:34:09 GMT+1
+
+════════════════════════════════════════════════════════════
+
+WORK IDENTIFICATION
+────────────────────────────────────────────────────────────
+Title:           Maskentanz im Abgrund (Mask Dance in the Abyss)
+Genre / Style:   Dark Jazz / Trip-Hop Jazz / Experimental
+Feel / Tempo:    ♩ = 58, heavy and hypnotic, uneven phrase lengths, dragging swing with electronic pulse
+Key:             D minor (modal drift through D Phrygian, D Dorian, occasional Bb Lydian)
+Form:            Intro (8) / A (12) / Interlude 1 (6) / B (14) / A' (12) / Interlude 2 (8) / C (16) / Outro (10)
+Language:        German
+Type of work:    Musical composition with lyrics
+
+════════════════════════════════════════════════════════════
+
+AUTHORSHIP
+────────────────────────────────────────────────────────────
+Author / Composer:  Alex Schulz
+Role:               Composer, Lyricist, Arranger
+Authorship share:   100%
+Creation tool:      Jazz Forge AI Composition Suite
+
+Note: This document certifies the date and content of the creative
+work at the time of generation. The author is responsible for
+registration with the relevant performing rights organization
+(GEMA, ASCAP, BMI, PRS, SACEM, RAO, etc.).
+
+════════════════════════════════════════════════════════════
+
+LYRICS
+────────────────────────────────────────────────────────────
+**
+
+════════════════════════════════════════════════════════════
+
+FULL COMPOSITION
+────────────────────────────────────────────────────────────
+TITLE: Maskentanz im Abgrund (Mask Dance in the Abyss)
+STYLE: Dark Jazz / Trip-Hop Jazz / Experimental
+FEEL: ♩ = 58, heavy and hypnotic, uneven phrase lengths, dragging swing with electronic pulse
+KEY: D minor (modal drift through D Phrygian, D Dorian, occasional Bb Lydian)
+FORM: Intro (8) / A (12) / Interlude 1 (6) / B (14) / A' (12) / Interlude 2 (8) / C (16) / Outro (10)
+
+[INTRO]
+Melody: None (instrumental atmospheric build)
+Harmony: Dm pedal with electronics layering Dm - Eb - Dm - C#dim over 8 bars
+Notes: Darbuka enters bar 3 with slow, off-kilter 7/8 pattern. Santoor tremolo on D-F-A creates metallic shimmer. Bass enters bar 5 with D pedal, half-time feel. Accordion breathes Dm cluster chords (D-F-Ab-A) bars 6-8, building claustrophobia.
+
+[SECTION A]
+Melody: Vocal enters bar 9. Melodic phrase centers on D-E-F-G-A range, predominantly stepwise with chromatic neighbor tones. Phrases begin on beat 3 or 4 (off-balance entry). Descending minor thirds (A to F, G to Eb) create falling sensation. Final phrase of section drops to low A, sustained and breathy.
+
+Harmony: 
+Bars 1-4: Dm9 / Ebmaj7#11 / Dm9 / C#dim7
+Bars 5-8: Dm11 / Gm9/D / F#º7 / Bb7#9
+Bars 9-12: Dm(add9) / Am7b5/D / Gm6 / Dm7
+
+Notes: Bass walks in half-time, emphasizing beat 1 and the and-of-3. Saxophone doubles vocal melody at the octave in bars 9-12 only, breathy tone, subtone register. Darbuka maintains 7/8 groove underneath 4/4 pulse (polymetric tension). Electronics add vinyl crackle, reversed whispers, low-pass filtered pad on Eb.
+
+[INTERLUDE 1]
+Melody: Saxophone solo fragment, 6 bars. Begins on high F, descends chromatically through minor thirds into altissimo wail (bar 5), cuts off abruptly bar 6.
+Harmony: Bbmaj7#11 / Am7b5 / Dm pedal (4 bars)
+Notes: Accordion drops out. Santoor plays harmonic glissandi. Electronics introduce heartbeat-like kick drum (processed, distorted). Bass plays D pedal with slight detuning/chorus effect.
+
+[SECTION B]
+Melody: Vocal phrasing becomes fragmented, conversational but sinister. Tessitura drops into low baritone chest voice (G to D below middle C). Rhythmic displacement—phrases land on unexpected beats. Melodic contour: circling obsessively around D-C-Bb-A, then sudden leap to F (bar 10), held and cracked/distorted.
+
+Harmony:
+Bars 1-4: Dm7 / Dbmaj7 (bII) / Cm9 / B7alt
+Bars 5-8: Bbmaj7#5 / Am7 / Abdim7 / Gm7b5
+Bars 9-12: F#m7b5 / Fm9 / Em7b5 / Ebmaj7#11
+Bars 13-14: Dm pedal / Dm(add b13)
+
+Notes: Trip-hop beat solidifies—kick on 1 and 3-and, snare on delayed 4. Darbuka doubles with pitched rim shots. Accordion plays staccato stabs on off-beats (2-and, 4-and), cluster voicings. Saxophone enters bar 9 with low register countermelody, growl technique. Santoor plays dissonant harmonic clusters, bowed metal sound. Electronics layer detuned Rhodes-like sound, heavily filtered.
+
+[SECTION A']
+Melody: Vocal melody returns but ornamented with microtonal bends, spoken-sung phrases. More rhythmic freedom—rubato within strict pulse underneath. Last phrase extends by 2 bars, dissolving into whispered German.
+
+Harmony: Same as Section A, bars 1-12, but final 2 bars extend:
+Bars 11-12: Gm6 / Dm7 / Ebmaj7 / Dm(no5)
+
+Notes: Full ensemble. Darbuka adds 16th-note embellishments. Bass walks more actively, chromatic approach tones. Saxophone harmonizes vocal in minor sixths below. Accordion sustains, accordion bellows create breathing/wheezing effect. Electronics add pitch-shifted vocal doubles (down octave, ghostly).
+
+[INTERLUDE 2]
+Melody: Santoor solo, 8 bars. Fast tremolo on modal scales—D Phrygian dominant (D-Eb-F#-G-A-Bb-C), cascading downward runs with occasional upward leaps of minor ninths.
+
+Harmony: D pedal throughout / Eb9 / Dm / Eb9 / Dm / Gm7 / C7alt / Dm
+
+Notes: Sparse texture. Bass and electronics only—bass plays sustained D with filter sweep. Electronics add granular synthesis, frozen vocal samples. Darbuka plays sparse, ritualistic hits (bars 1, 3, 5, 7). Builds intensity into Section C.
+
+[SECTION C]
+Melody: Vocal climax. Phrasing becomes desperate, fragmented gasps and sustained tones. Tessitura widens (low G to middle Bb). Melodic material: obsessive repetition of three-note cell (D-Eb-F), transposed, inverted, stretched. Bar 12: sustained high A, strained and raw, held 6 beats. Final phrase (bars 14-16): descending chromatic line from F to D, spoken-sung, fading into inaudibility.
+
+Harmony:
+Bars 1-4: Dm / Dm/C# / Dm/C / Dm/B
+Bars 5-8: Bbmaj7#11 / A7b9 / Dm9 / Ebmaj7
+Bars 9-12: F#dim7 / Gm7 / Ab7#11 / Dm
+Bars 13-16: Cm9 / B7alt / Bbmaj7 / Dm(add b9, b13)
+
+Notes: Maximum density. Saxophone plays screaming altissimo figures, overblown multiphonics (bars 9-12). Accordion plays dense cluster chords, ff dynamics, staccato attacks. Darbuka breaks into fast rolls, polyrhythmic against trip-hop beat. Bass plays angular, disjunct line with distortion. Santoor layers tremolo on dissonant intervals (minor seconds, tritones). Electronics: reversed cymbals, white noise bursts, sub-bass drops on beats 1 and 3. Dynamics peak bar 12, then sudden drop bar 13 to p.
+
+[OUTRO]
+Melody: Saxophone solo, lonely and distant. High register, almost no vibrato. Phrases hang in space. Final phrase quotes opening vocal melody (inverted), ends on unresolved F# (major third above D pedal, haunting).
+
+Harmony: Dm pedal / Ebmaj7 / Dm pedal (sustained, decaying)
+
+Notes: Electronics fade in reverse. Accordion sustains Dm cluster, slow decay. Darbuka plays slow ritualistic pulse, fading. Bass drops out bar 6. Santoor adds final metallic shimmer, D-F-A, let ring. All instruments fade except low electronic hum on D. Final sound: distant accordion wheeze, cut to silence (no reverb tail).
+
+[LYRICS]
+
+**[Section A - bars 1-12]**
+
+Die Masken tanzen, schweigen nicht,
+ich trage eine, die mich bricht.
+Sie flüstern Namen, die ich kenn'—
+im Spiegel seh' ich, wer ich ben.
+
+Samt und Fleisch und kalter Schweiß,
+ich zahle den verbotenen Preis.
+Hinter Türen, rot und schwer,
+atmet Wien—doch ich nicht mehr.
+
+**[Section B - bars 1-14]**
+
+Die Kerzen flackern, Schatten kriech'n,
+ich spür' die Blicke, die mich zieh'n.
+Sie kennen meine Sünde schon,
+bevor ich sprech', bevor ich floh.
+
+Wer hat mir diesen Weg gezeigt?
+Wer hat die Wahrheit mir verschweigt?
+Jetzt tanz' ich mit, im Fleischesrausch,
+und höre meinen letzten Hauch.
+
+Ihre Hände, kalt wie Stein—
+lade mich zur Hölle ein.
+
+**[Section A' - bars 1-12]**
+
+Die Masken tanzen, schweigen nicht,
+ich trage eine, die mich bricht.
+Sie flüstern Namen, die ich kenn'—
+im Spiegel seh' ich... nichts mehr... wen?
+
+Samt und Asche, kaltes Licht,
+ich such' den Ausgang—find' ihn nicht.
+
+**[Section C - bars 1-16]**
+
+Und sie ziehen mich hinab,
+hinab in ihr geheimes Grab.
+Ich schrei', doch keine Stimme bleibt,
+mein Herz schlägt nicht—es reibt, es reibt.
+
+Die Nacht hat Zähne, scharf und blank,
+ich fall', ich fall', kein Halt, kein Dank.
+Sie nehmen alles—Fleisch, Verstand—
+ich bin verloren, unerkannt.
+
+Maskentanz... Maskentanz...
+im Abgrund... keine Chance...
+
+*(whispered, fragmented)*
+...keine Chance... keine... nichts...
+
+[IMPROVISATION CONCEPTS]
+
+**Intro:**
+Santoor: Focus on tremolo in upper register, D-F-A triad with occasional chromatic neighbor tones (Db, Eb). Use metallic, ringing timbre. Build intensity through increased tremolo speed, not volume.
+
+**Section A:**
+Saxophone: If soloing between vocal phrases, stay in D Dorian, use space. Emphasize minor thirds and perfect fourths. Subtone in low register (D to A below staff), occasional altissimo cries (high F to A). Match the suffocating mood—avoid brightness.
+
+**Interlude 1:**
+Saxophone: Solo space. Explore D Phrygian (Db as color tone). Use multiphonics (fingering: low D with octave key, partial venting). Descending chromatic lines through thirds. End phrase with altissimo wail (high F# or G), cut off with key click.
+
+**Section B:**
+Electronics: Introduce glitchy textures, stutter edits of vocal phrases. Use granular delay on saxophone. Sub-bass drops on Dbmaj7 chord (bII)—emphasize the disorienting half-step motion.
+Accordion: Stabs should feel like sharp intakes of breath. Cluster voicings: stack minor seconds and tritones. Use bellows shake for texture on sustained chords (bar 13-14).
+
+**Interlude 2:**
+Santoor: Modal solo in D Phrygian dominant (D-Eb-F#-G-A-Bb-C). Fast tremolo runs cascading downward, occasional upward leaps (minor ninths, major sevenths). Think of Indian classical influence but filtered through dark European aesthetic. Use harmonic nodes for bell-like overtones in bars 6-8.
+
+**Section C:**
+Saxophone: Push into extreme register and techniques. Altissimo multiphonics (bars 9-12)—use fingerings that produce unstable, beating intervals. Growl technique in low register under vocal. In climax (bar 12), sustain altissimo A with maximum breath pressure, allow note to crack and split.
+Darbuka: Break free from pattern—fast rolls using finger and palm techniques, syncopated accents against trip-hop grid. Bars 13-16: return to sparse ritualistic hits.
+
+**Outro:**
+Saxophone: Solo, lonely. High register (A above staff to E), almost no vibrato. Use silence as material—long rests between phrases. Quote inverted vocal melody from Section A. Final phrase: unresolved F# over Dm pedal, long tone, fade into niente. No flashy conclusion—disappear.
+
+[ARRANGEMENT NOTES]
+
+**Overall Sonic Concept:**
+This is a sound-world of decay, paranoia, and forbidden ritual. The arrangement must feel suffocating—layers compress the stereo field rather than open it. Use heavy side-chain compression on all elements tied to the kick drum. Vinyl crackle and tape hiss present throughout at low volume. All acoustic instruments processed with subtle detuning, chorus, or bitcrushing to create unease.
+
+**Intro (8 bars):**
+- Bar 1: Electronics alone—filtered noise sweep, rising pitch, vinyl crackle
+- Bar 3: Darbuka enters, 7/8 pattern (3+2+2), played on rim and low tom tones, dynamics p
+- Bar 5: Bass enters, D pedal, half-time feel, slight chorus/detune effect, dynamics mp
+- Bar 6: Accordion enters, Dm cluster chords (D-F-Ab-A), breathe with bellows (crescendo/decrescendo each chord), dynamics mp to mf
+- Bar 7: Santoor tremolo, D-F-A triad, metallic shimmer, dynamics mf
+- Bar 8: Electronics add reversed cymbal, sub-bass hit on beat 1
+
+**Section A (12 bars):**
+- Bars 1-4: Vocal enters bar 1 (lyric line 1). Saxophone doubles melody at octave below, breathy subtone. Darbuka continues 7/8 under 4/4 pulse. Bass half-time walk (D-E-F-D-C#-D pattern). Accordion sustains Dm9, Ebmaj7#11 voicings, long tones. Electronics: pad on Eb (low-pass filtered, slow LFO), vinyl crackle.
+- Bars 5-8: Full ensemble. Santoor adds tremolo on chord tones. Dynamics build from mp to mf. Vocal phrasing more urgent. Saxophone continues doubling. Trip-hop beat suggestion begins (kick on 1, snare ghost note on 3).
+- Bars 9-12: Vocal final phrase descends to low A (bar 12). Saxophone drops out bar 10. Accordion plays staccato stabs bars 10-12. Darbuka adds 16th-note embellishments. Bass walks more chromatically. Electronics add reversed whispers (pitch-shifted vocal samples), dynamics peak mf then drop to mp at bar 12.
+
+**Interlude 1 (6 bars):**
+- Sparse texture. Accordion drops out completely.
+- Saxophone solo fragment: begins bar 1 on high F, descends chromatically, bar 5 altissimo wail to high G, bar 6 abrupt cut-off with key click.
+- Bass: D pedal, slight detune/chorus, dynamics p.
+- Santoor: harmonic glissandi (slide finger along string while playing), bars 3 and 5.
+- Electronics: introduce heartbeat kick (distorted 808, side-chained to bass), tempo ♩ = 58, dynamics mp.
+- Darbuka: sparse hits bars 2, 4, 6 (ritualistic).
+
+**Section B (14 bars):**
+- Trip-hop beat solidifies: kick on 1 and 3-and, snare on delayed 4 (slightly behind the beat), hi-hat pattern (closed 8ths with occasional open on and-of-2).
+- Vocal: low baritone register, dynamics mf to f. Fragmented phrasing, speak-sing in bars 9-10.
+- Bars 1-8: Accordion plays staccato cluster stabs on off-beats (2-and, 4-and), ff attacks, short decay. Darbuka doubles with pitched rim shots. Bass walks, chromatic approach tones, quarter-note triplets bar 5. Saxophone stays out.
+- Bars 9-14: Saxophone enters bar 9, low register countermelody (D to A below staff), growl technique, dynamics mf. Santoor plays dissonant harmonic clusters (minor seconds, tritones), bowed metal sound (use coin or pick on strings), dynamics mp. Electronics layer detuned Rhodes-like sound (FM synthesis), heavily filtered, slow attack. Accordion continues stabs. Build intensity through bars 11-14. Bar 14: all instruments sustain Dm(add b13), fermata 2 beats.
+
+**Section A' (12 bars):**
+- Full arrangement returns but with added density.
+- Vocal melody ornamented: microtonal bends on sustained notes (bars 3, 7, 11), spoken-sung final phrase bars 10-12 (whispered German, "im Spiegel seh' ich... nichts mehr... wen?").
+- Saxophone harmonizes vocal in minor sixths below, dynamics mf.
+- Darbuka adds 16th-note embellishments, rolls on bars 6, 12.
+- Bass walks more actively, triplet feel bars 5-8.
+- Accordion sustains chords, bellows breathing/wheezing effect (slow crescendo-decrescendo), dynamics mp to mf.
+- Santoor tremolo on chord tones, upper register.
+- Electronics: pitch-shifted vocal doubles (down octave, panned wide L/R), granular delay on saxophone, dynamics mf.
+- Bars 11-12 extend by 2 bars: Gm6 / Dm7 / Ebmaj7 / Dm(no5). Vocal fades into whisper. All instruments decrescendo to p except electronics (maintain mf).
+
+**Interlude 2 (8 bars):**
+- Santoor solo feature.
+- Bars 1-8: D pedal underneath (bass only), filter sweep (low-pass opening slowly). Darbuka plays sparse ritualistic hits bars 1, 3, 5, 7, dynamics p.
+- Santoor: D Phrygian dominant scale, fast tremolo runs cascading downward (bars 1-4), occasional upward leaps of minor ninths (bars 5-6), harmonic nodes for bell-like overtones bars 7-8.
+- Electronics: granular synthesis on frozen vocal samples ("Maskentanz" syllables), slow pitch drift, dynamics mp. Add reversed cymbal bar 8 (builds into Section C).
+- Dynamics build from p (bar 1) to mf (bar 8).
+
+**Section C (16 bars):**
+- Maximum density and intensity. This is the psychotic break.
+- Trip-hop beat at full force: kick heavily distorted, snare with reverb, hi-hats frantic (16ths).
+- Vocal: desperate, fragmented. Bars 1-11 dynamics f to ff, bar 12 sustained high A (strained, raw), bars 13-16 decrescendo to pp (spoken-sung chromatic descent, fading).
+- Saxophone: bars 1-8 rhythmic stabs with vocal, bars 9-12 altissimo multiphonics (overblown, screaming), dynamics ff. Bar 12: sustain altissimo A with vocal, then drop out bar 13.
+- Accordion: dense cluster chords, ff staccato attacks, bars 1-12. Bars 13-16 decrescendo, sustained Bbmaj7 to Dm(add b9, b13), slow decay.
+- Darbuka: bars 1-12 fast rolls, polyrhythmic against beat (7/8 pattern over 4/4 grid), dynamics ff. Bars 13-16 return to ritualistic sparse hits, decrescendo to p.
+- Bass: angular disjunct line, distortion/overdrive, bars 1-12 dynamics f. Bars 13-16 simplify to root notes, decrescendo, drop out bar 15.
+- Santoor: tremolo on dissonant intervals (minor seconds, tritones), bars 1-12 dynamics ff. Bars 13-16 decrescendo, final harmonic cluster bar 16, let ring.
+- Electronics: reversed cymbals bars 2, 6, 10, white noise bursts on downbeats bars 9-12, sub-bass drops on beats 1 and 3 (808 sine sub), dynamics ff. Bars 13-16 all electronic elements fade except low hum on D (sine wave, dynamics pp).
+- Bar 12: peak intensity—all instruments ff, then sudden drop bar 13 to p/pp (moment of shock/dissociation).
+
+**Outro (10 bars):**
+- Deconstruction. Sparse, haunting.
+- Saxophone solo: bars 1-10, high register (A above staff to F#), almost no vibrato, long rests between phrases (bars 3, 6, 8), dynamics mp to p. Final phrase quotes inverted Section A vocal melody, ends on unresolved F# over Dm pedal, long tone fading to niente (bar 10).
+- Accordion: sustains Dm cluster chord, slow decay, bars 1-10, dynamics p to ppp.
+- Darbuka: slow ritualistic pulse bars 1-5, dynamics p, fade out bar 6.
+- Bass: D pedal bars 1-5, dynamics p, drop out bar 6.
+- Santoor: final metallic shimmer bars 7-9, D-F-A triad, tremolo slowing, let ring into bar 10, dynamics pp.
+- Electronics: all elements fade in reverse (reversed reverb tails), bars 1-8. Bar 9-10: low hum on D (sine wave, 55 Hz), dynamics ppp. Bar 10 final sound: distant accordion wheeze (bellows noise), hard cut to silence (no reverb tail, no fade—abrupt ending).
+
+**Mixing Notes:**
+- Pan accordion slightly left, santoor slightly right, saxophone center, vocal center.
+- Heavy side-chain compression on all instruments to kick drum (pumping effect, enhances hypnotic quality).
+- Use parallel compression on vocal for presence and rawness.
+- Darbuka and bass share low-mid frequency space—carve bass at 200 Hz, boost darbuka slightly at 180 Hz for clarity.
+- Electronics: wide stereo field for pads and textures, mono sub-bass (centered).
+- Apply tape saturation to master bus for cohesion and warmth.
+- Vinyl crackle: low-pass filter at 8 kHz, blend at -30 dB throughout track.
+- Reversed sounds: high-pass filter at 300 Hz to avoid mud.
+- Final mix should feel dense, oppressive, close to the ear. Avoid spacious reverb except on snare (plate reverb, 1.8s decay).
+
+════════════════════════════════════════════════════════════
+
+GEMA REGISTRATION FIELDS (for manual submission)
+────────────────────────────────────────────────────────────
+Title of work:          Maskentanz im Abgrund (Mask Dance in the Abyss)
+Original title:         Maskentanz im Abgrund (Mask Dance in the Abyss)
+Type:                   Original work
+Genre:                  Dark Jazz / Trip-Hop Jazz / Experimental
+Duration (estimated):   3:30
+Language of lyrics:     German
+Composer:               Alex Schulz · share: 50%
+Lyricist:               Alex Schulz · share: 50%
+Publisher:              (fill in if applicable)
+ISRC:                   (assign after recording)
+ISWC:                   (assigned by GEMA/CISAC after registration)
+
+════════════════════════════════════════════════════════════
+
+DECLARATION
+────────────────────────────────────────────────────────────
+I, Alex Schulz, declare that:
+
+1. I am the sole author and rights holder of the work described above.
+2. This work was created on 15 May 2026 at 21:34:09 GMT+1.
+3. The content of this document accurately reflects the work
+   as it existed at the time of creation.
+4. I have not assigned or licensed these rights to any third party
+   without explicit written agreement.
+
+Signature: _______________________________
+Date:      _______________________________
+
+════════════════════════════════════════════════════════════
+
+Generated by Jazz Forge · AI Composition Suite
+Document ID: RF-1778877249326 · 2026-05-15T20:34:09.325Z
