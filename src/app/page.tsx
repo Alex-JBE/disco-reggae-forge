@@ -492,7 +492,7 @@ export default function Home() {
             }}>
               Forge your next
               <br />
-              <span style={{ color: "var(--gold)", fontStyle: "italic" }}>riddim</span>
+              <span style={{ color: "var(--gold)", fontStyle: "italic" }}>disco reggae anthem</span>
             </div>
             <div style={{ fontSize: "13px", color: "var(--text-muted)", marginTop: "12px", lineHeight: 1.4 }}>
               Select branch, set the groove, generate.
