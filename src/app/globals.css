@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Tropical dark base */
+  --bg-primary: #0A0C0A;
+  --bg-secondary: #101411;
+  --bg-panel: #0C110D;
+  --bg-card: #151B17;
+
+  /* Green + gold accents */
+  --green: #17806D;
+  --green-deep: #0B3D2E;
+  --green-light: #5DCAA5;
+  --gold: #D4AF37;
+  --gold-dim: #7A5A1F;
+  --gold-soft: #E9C46A;
+
+  /* Aliases for shared component reuse */
+  --indigo: var(--green);
+  --indigo-dim: var(--green-deep);
+  --indigo-light: var(--green-light);
+  --purple: var(--gold);
+  --purple-dim: var(--gold-dim);
+
+  --text-primary: #F4EFE2;
+  --text-secondary: #A9B3AA;
+  --text-muted: #5C665E;
+  --border: #243328;
+  --border-indigo: #11251E;
+  --border-purple: #2E2514;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.font-display { font-family: 'Playfair Display', serif; }
+.font-mono { font-family: 'DM Mono', monospace; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+::selection { background: var(--gold-dim); color: var(--text-primary); }

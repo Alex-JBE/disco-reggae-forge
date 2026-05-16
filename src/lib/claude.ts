@@ -1,0 +1,37 @@
+import Anthropic from "@anthropic-ai/sdk";
+
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+});
+
+export async function generateJazz(prompt: string): Promise<string> {
+  const message = await anthropic.messages.create({
+    model: "claude-sonnet-4-5",
+    max_tokens: 2048,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const content = message.content[0];
+  if (content.type === "text") return content.text;
+  return "";
+}
+
+export async function generateJazzStream(
+  prompt: string,
+  onChunk: (chunk: string) => void
+): Promise<void> {
+  const stream = await anthropic.messages.stream({
+    model: "claude-sonnet-4-5",
+    max_tokens: 2048,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  for await (const chunk of stream) {
+    if (
+      chunk.type === "content_block_delta" &&
+      chunk.delta.type === "text_delta"
+    ) {
+      onChunk(chunk.delta.text);
+    }
+  }
+}
