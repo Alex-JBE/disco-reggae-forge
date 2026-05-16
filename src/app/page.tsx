@@ -741,7 +741,7 @@ export default function Home() {
                     fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s",
                   }}
                 >
-                  {combosLoading ? "Finding..." : `✦ Find`}
+                  {combosLoading ? "Finding..." : `✦ Find for ${activeStyles[0]}`}
                 </button>
               </div>
 
