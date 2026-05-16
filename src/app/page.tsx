@@ -55,6 +55,13 @@ const INSTRUMENTS = [
   "Rhodes",
 ];
 
+const EXOTIC_INSTRUMENTS = [
+  "Oud", "Sitar", "Kora", "Bouzouki", "Banjo", "Mandolin", "Ngoni", "Pipa", "Guzheng",
+  "Harmonica", "Duduk", "Ney Flute", "Bansuri", "Shakuhachi", "Pan Flute",
+  "Djembe", "Tabla", "Darbuka", "Kalimba", "Hang Drum", "Cajon", "Mbira", "Balafon",
+  "Accordion", "Harmonium", "Santoor", "Gamelan",
+];
+
 const KEYS = [
   "C major", "D minor", "Eb major", "F major",
   "G major", "Ab major", "Bb major", "B minor",
@@ -106,9 +113,10 @@ const VOCAL_TONES = [
 ];
 
 const LANGUAGES = [
-  "English", "Jamaican Patois", "French", "Spanish", "Portuguese",
-  "Russian", "Japanese", "German", "Italian", "Arabic",
-  "Dutch", "Swedish", "Polish", "Greek", "Hebrew",
+  "English", "Jamaican Patois", "Russian", "Portuguese", "French", "Spanish", "Japanese",
+  "German", "Italian", "Arabic", "Hindi", "Chinese", "Turkish", "Hebrew",
+  "Dutch", "Swedish", "Norwegian", "Danish", "Finnish", "Polish", "Czech",
+  "Hungarian", "Romanian", "Greek", "Ukrainian", "Catalan", "Serbian", "Amharic",
 ];
 
 type Combo = { icon: string; label: string; styles: string[] };
@@ -929,6 +937,16 @@ export default function Home() {
                 <div style={s.paramLabel}>Instrumentation</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
                   {INSTRUMENTS.map(i => (
+                    <button key={i} onClick={() => toggleInstrument(i)} style={s.tag(instruments.includes(i))}>
+                      {i}
+                    </button>
+                  ))}
+                </div>
+                <div style={{ fontSize: "10px", color: "var(--text-muted)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: "8px", marginBottom: "6px", fontWeight: 500 }}>
+                  World & Exotic
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                  {EXOTIC_INSTRUMENTS.map(i => (
                     <button key={i} onClick={() => toggleInstrument(i)} style={s.tag(instruments.includes(i))}>
                       {i}
                     </button>
