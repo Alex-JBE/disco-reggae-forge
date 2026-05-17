@@ -35,8 +35,7 @@ export interface BranchState {
 export interface BranchPanelProps {
   defaultGenre?: GenreId
   defaultSubgenre?: SubgenreId
-  onChange: (selection: BranchSelection) => void
-  containerWidth?: number
+  onChange: (selections: BranchSelection[]) => void
   disabled?: boolean
 }
 

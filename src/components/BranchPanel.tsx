@@ -2,9 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { GENRES, GENRE_ORDER } from '@/data/genres'
-import type { BranchPanelProps, BranchState, GenreId, SubgenreId } from '@/data/genres'
+import type { BranchPanelProps, BranchSelection, GenreId, SubgenreId } from '@/data/genres'
 
-function initStateFromProps(props: BranchPanelProps): BranchState {
+const MAX_SELECTIONS = 3
+
+function getDefaultSelections(props: BranchPanelProps): BranchSelection[] {
   const genre: GenreId =
     props.defaultGenre !== undefined && GENRE_ORDER.includes(props.defaultGenre)
       ? props.defaultGenre
@@ -14,12 +16,12 @@ function initStateFromProps(props: BranchPanelProps): BranchState {
     GENRES[genre].subgenres.some((s) => s.id === props.defaultSubgenre)
       ? props.defaultSubgenre
       : GENRES[genre].subgenres[0].id
-  return { activeGenre: genre, activeSubgenre: subgenre }
+  return [{ genre, subgenre }]
 }
 
-function persist(s: BranchState): void {
+function persist(selections: BranchSelection[]): void {
   try {
-    localStorage.setItem('drf.branch', JSON.stringify({ genre: s.activeGenre, subgenre: s.activeSubgenre }))
+    localStorage.setItem('drf.branch', JSON.stringify(selections))
   } catch {}
 }
 
@@ -39,8 +41,7 @@ function getActiveBg(accentColor: string): string {
 
 export default function BranchPanel(props: BranchPanelProps) {
   const { disabled = false } = props
-  const [state, setState] = useState<BranchState>(() => initStateFromProps(props))
-  const { activeGenre, activeSubgenre } = state
+  const [selections, setSelections] = useState<BranchSelection[]>(() => getDefaultSelections(props))
   const [openDropdown, setOpenDropdown] = useState<GenreId | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -49,18 +50,17 @@ export default function BranchPanel(props: BranchPanelProps) {
     try {
       const raw = localStorage.getItem('drf.branch')
       if (!raw) return
-      const parsed = JSON.parse(raw) as { genre: unknown; subgenre: unknown }
-      const genreValid = GENRE_ORDER.includes(parsed.genre as GenreId)
-      const subgenreValid =
-        genreValid && GENRES[parsed.genre as GenreId].subgenres.some((s) => s.id === parsed.subgenre)
-      if (!genreValid || !subgenreValid) { localStorage.removeItem('drf.branch'); return }
-      const storedGenre = parsed.genre as GenreId
-      const storedSubgenre = parsed.subgenre as SubgenreId
-      if (storedGenre !== state.activeGenre || storedSubgenre !== state.activeSubgenre) {
-        const next: BranchState = { activeGenre: storedGenre, activeSubgenre: storedSubgenre }
-        setState(next)
-        props.onChange({ genre: storedGenre, subgenre: storedSubgenre })
-      }
+      const parsed = JSON.parse(raw)
+      if (!Array.isArray(parsed) || parsed.length === 0) return
+      const valid = parsed.filter((item: unknown) => {
+        if (typeof item !== 'object' || item === null) return false
+        const { genre, subgenre } = item as { genre: unknown; subgenre: unknown }
+        const genreValid = GENRE_ORDER.includes(genre as GenreId)
+        return genreValid && GENRES[genre as GenreId].subgenres.some((s) => s.id === subgenre)
+      }) as BranchSelection[]
+      if (valid.length === 0) { localStorage.removeItem('drf.branch'); return }
+      setSelections(valid)
+      props.onChange(valid)
     } catch {}
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -76,30 +76,56 @@ export default function BranchPanel(props: BranchPanelProps) {
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])
 
-  function selectGenre(genreId: GenreId): void {
+  function isGenreSelected(genreId: GenreId): boolean {
+    return selections.some((s) => s.genre === genreId)
+  }
+
+  function getSubgenreForGenre(genreId: GenreId): SubgenreId {
+    return selections.find((s) => s.genre === genreId)?.subgenre ?? GENRES[genreId].subgenres[0].id
+  }
+
+  function toggleGenre(genreId: GenreId): void {
     if (disabled) return
     setOpenDropdown(null)
-    if (genreId === activeGenre) return
-    const newSubgenre = GENRES[genreId].subgenres[0].id
-    const next: BranchState = { activeGenre: genreId, activeSubgenre: newSubgenre }
-    setState(next)
+    let next: BranchSelection[]
+    if (isGenreSelected(genreId)) {
+      // deselect — keep at least one
+      if (selections.length === 1) return
+      next = selections.filter((s) => s.genre !== genreId)
+    } else {
+      // select — up to MAX_SELECTIONS
+      if (selections.length >= MAX_SELECTIONS) return
+      next = [...selections, { genre: genreId, subgenre: GENRES[genreId].subgenres[0].id }]
+    }
+    setSelections(next)
     persist(next)
-    props.onChange({ genre: genreId, subgenre: newSubgenre })
+    props.onChange(next)
   }
 
   function selectSubgenre(genreId: GenreId, subgenreId: SubgenreId): void {
     if (disabled) return
     setOpenDropdown(null)
-    const next: BranchState = { activeGenre: genreId, activeSubgenre: subgenreId }
-    setState(next)
+    let next: BranchSelection[]
+    if (isGenreSelected(genreId)) {
+      // update existing
+      next = selections.map((s) => s.genre === genreId ? { genre: genreId, subgenre: subgenreId } : s)
+    } else {
+      // add new (if room)
+      if (selections.length >= MAX_SELECTIONS) return
+      next = [...selections, { genre: genreId, subgenre: subgenreId }]
+    }
+    setSelections(next)
     persist(next)
-    props.onChange({ genre: genreId, subgenre: subgenreId })
+    props.onChange(next)
   }
 
-  const activeGenreData = GENRES[activeGenre]
-  const activeSubgenreData = activeGenreData.subgenres.find((s) => s.id === activeSubgenre)!
-  const accentActive = getAccentColor(activeGenreData.accentColor)
-  const bgActive = getActiveBg(activeGenreData.accentColor)
+  function removeSelection(genreId: GenreId): void {
+    if (disabled || selections.length === 1) return
+    const next = selections.filter((s) => s.genre !== genreId)
+    setSelections(next)
+    persist(next)
+    props.onChange(next)
+  }
 
   return (
     <section ref={containerRef} style={{ padding: '12px 14px 4px' }}>
@@ -112,7 +138,7 @@ export default function BranchPanel(props: BranchPanelProps) {
           BRANCH
         </span>
         <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontStyle: 'italic', fontFamily: "'DM Sans', sans-serif" }}>
-          Your musical DNA
+          {selections.length > 1 ? `Blend mode — ${selections.length} active` : 'Your musical DNA'}
         </span>
       </div>
 
@@ -120,10 +146,13 @@ export default function BranchPanel(props: BranchPanelProps) {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5px' }}>
         {GENRE_ORDER.map((genreId) => {
           const genre = GENRES[genreId]
-          const isSelected = genreId === activeGenre
+          const isSelected = isGenreSelected(genreId)
           const isOpen = openDropdown === genreId
+          const currentSubgenreId = getSubgenreForGenre(genreId)
+          const currentSubgenre = genre.subgenres.find((s) => s.id === currentSubgenreId)!
           const accent = getAccentColor(genre.accentColor)
           const bg = getActiveBg(genre.accentColor)
+          const canSelect = isSelected || selections.length < MAX_SELECTIONS
 
           return (
             <div key={genreId} style={{ position: 'relative' }}>
@@ -135,16 +164,18 @@ export default function BranchPanel(props: BranchPanelProps) {
                 background: isSelected ? bg : 'var(--bg-card)',
                 overflow: 'hidden',
                 transition: 'border-color 0.15s, background 0.15s',
+                opacity: (!canSelect && !isSelected) ? 0.4 : 1,
               }}>
                 {/* Genre body button */}
                 <button
-                  onClick={() => selectGenre(genreId)}
+                  onClick={() => toggleGenre(genreId)}
+                  disabled={!canSelect && !isSelected}
                   style={{
                     flex: 1, minWidth: 0,
                     padding: isSelected ? '6px 4px 6px 11px' : '8px 4px 8px 11px',
                     background: 'transparent', border: 'none',
                     color: isSelected ? accent : 'var(--text-muted)',
-                    cursor: disabled ? 'not-allowed' : 'pointer',
+                    cursor: (disabled || (!canSelect && !isSelected)) ? 'not-allowed' : 'pointer',
                     textAlign: 'left' as const,
                     fontFamily: "'DM Sans', sans-serif",
                     transition: 'color 0.15s',
@@ -154,11 +185,8 @@ export default function BranchPanel(props: BranchPanelProps) {
                     {genre.label}
                   </div>
                   {isSelected && (
-                    <div style={{
-                      fontSize: '10px', opacity: 0.75, marginTop: '1px',
-                      whiteSpace: 'nowrap' as const, overflow: 'hidden', textOverflow: 'ellipsis',
-                    }}>
-                      {activeSubgenreData.label}
+                    <div style={{ fontSize: '10px', opacity: 0.75, marginTop: '1px', whiteSpace: 'nowrap' as const, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {currentSubgenre.label}
                     </div>
                   )}
                 </button>
@@ -194,7 +222,7 @@ export default function BranchPanel(props: BranchPanelProps) {
                   boxShadow: '0 6px 20px rgba(0,0,0,0.5)',
                 }}>
                   {genre.subgenres.map((sub, idx) => {
-                    const subActive = sub.id === activeSubgenre && genreId === activeGenre
+                    const subActive = isSelected && sub.id === currentSubgenreId
                     return (
                       <button
                         key={sub.id}
@@ -235,21 +263,43 @@ export default function BranchPanel(props: BranchPanelProps) {
         })}
       </div>
 
-      {/* Selected tag */}
+      {/* Selected tags */}
       <div style={{ padding: '8px 0 6px', display: 'flex', gap: '5px', flexWrap: 'wrap' as const }}>
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: '5px',
-          fontSize: '12px', padding: '4px 10px 4px 12px',
-          borderRadius: '20px',
-          border: `1px solid ${accentActive}`,
-          background: bgActive,
-          color: accentActive,
-          fontFamily: "'DM Sans', sans-serif",
-          fontWeight: 500,
-        }}>
-          <span>{activeSubgenreData.fullLabel}</span>
-          <span style={{ opacity: 0.45, fontSize: '14px', lineHeight: '1', userSelect: 'none' as const }}>×</span>
-        </div>
+        {selections.map((sel) => {
+          const genreData = GENRES[sel.genre]
+          const subData = genreData.subgenres.find((s) => s.id === sel.subgenre)!
+          const accent = getAccentColor(genreData.accentColor)
+          const bg = getActiveBg(genreData.accentColor)
+          return (
+            <div
+              key={sel.genre}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '4px',
+                fontSize: '12px', padding: '4px 8px 4px 12px',
+                borderRadius: '20px',
+                border: `1px solid ${accent}`,
+                background: bg,
+                color: accent,
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 500,
+              }}
+            >
+              <span>{subData.fullLabel}</span>
+              <button
+                onClick={() => removeSelection(sel.genre)}
+                style={{
+                  background: 'none', border: 'none', color: 'inherit',
+                  cursor: selections.length === 1 ? 'default' : 'pointer',
+                  padding: '0 2px', fontSize: '14px', lineHeight: '1',
+                  opacity: selections.length === 1 ? 0.3 : 0.6,
+                  fontFamily: 'inherit',
+                }}
+              >
+                ×
+              </button>
+            </div>
+          )
+        })}
       </div>
     </section>
   )

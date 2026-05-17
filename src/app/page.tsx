@@ -230,10 +230,13 @@ export default function Home() {
   const instrumental = trackMode === "instrumental";
   const vocal = buildVocalString(trackMode, vocalGender, vocalRange, vocalTone);
 
-  function handleBranchChange(sel: BranchSelection) {
-    const sub = GENRES[sel.genre].subgenres.find((s) => s.id === sel.subgenre)!;
-    setActiveStyles([sub.fullLabel]);
-    generateTriplets(sub.fullLabel);
+  function handleBranchChange(sels: BranchSelection[]) {
+    const styles = sels.map(
+      (sel) => GENRES[sel.genre].subgenres.find((s) => s.id === sel.subgenre)!.fullLabel
+    );
+    setActiveStyles(styles);
+    setTriplets([]);
+    setTripletsForStyle("");
   }
 
   function generateTriplets(style: string) {
@@ -546,7 +549,7 @@ export default function Home() {
                 <button
                   onClick={() => generateTriplets(activeStyles[0])}
                   style={{
-                    fontSize: "11px", padding: "5px 12px", borderRadius: "20px",
+                    fontSize: "11px", padding: "5px 14px", borderRadius: "20px",
                     border: "1px solid var(--gold)",
                     background: "#1A1508",
                     color: "var(--gold)",
@@ -555,15 +558,16 @@ export default function Home() {
                     fontWeight: 500,
                     letterSpacing: "0.04em",
                     transition: "all 0.2s",
+                    whiteSpace: "nowrap" as const,
                   }}
                 >
-                  ✦ Generate
+                  ✦ Find for {activeStyles[0]}
                 </button>
               </div>
 
               {triplets.length === 0 && (
-                <div style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" as const, padding: "12px 0" }}>
-                  Generate groove / texture / mood triplets for your branch
+                <div style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" as const, padding: "14px 0" }}>
+                  Pick a branch above, then click Find
                 </div>
               )}
 
