@@ -82,6 +82,7 @@ export function generateTripletsForSubgenre(subgenreKey: string, subgenrePools: 
 
 // Mapping from display name → pool key
 export const SUBGENRE_POOL_KEY: Record<string, string> = {
+  // Legacy disco-reggae style names (STYLE_CATEGORIES)
   "Roots Disco Reggae":        "rootsDiscoReggae",
   "Lovers Disco Reggae":       "loversDiscoReggae",
   "Dub Disco Reggae":          "dubDiscoReggae",
@@ -94,4 +95,23 @@ export const SUBGENRE_POOL_KEY: Record<string, string> = {
   "Yacht Reggae Disco":        "yachtReggaeDisco",
   "Afro-Disco Reggae":         "afroDiscoReggae",
   "Club Dub Disco":            "clubDubDisco",
+  // BranchPanel subgenre fullLabels — Hybrid
+  "Disco Roots":               "rootsDiscoReggae",
+  "Disco Dub":                 "dubDiscoReggae",
+  "Lovers Glow":               "loversDiscoReggae",
+  "Steppers Funk":             "rootsDiscoReggae",
+  "Sunset Pop":                "sunsetReggaeDance",
+  // BranchPanel subgenre fullLabels — Reggae
+  "Roots Reggae":              "rootsDiscoReggae",
+  "Lovers Rock":               "loversDiscoReggae",
+  "Dub":                       "dubDiscoReggae",
+  "Rockers Reggae":            "rootsDiscoReggae",
+  "Steppers":                  "rootsDiscoReggae",
+  // BranchPanel subgenre fullLabels — Disco
+  "Classic Disco":             "boogieReggae",
+  "Italo Disco":               "synthDiscoReggae",
+  "Boogie":                    "boogieReggae",
+  "Hi-NRG":                    "synthDiscoReggae",
+  "Cosmic Disco":              "cosmicDiscoReggae",
+  // Funk / Soul / Pop intentionally unmapped — fallback shows no pool
 }

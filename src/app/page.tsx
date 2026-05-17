@@ -1,15 +1,18 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { buildPrompt } from "@/prompts/base-prompt";
 import ResultPanel from "@/components/ResultPanel";
 import DraftsPanel from "@/components/DraftsPanel";
 import CoverPanel from "@/components/CoverPanel";
 import VideoPanel from "@/components/VideoPanel";
 import Header from "@/components/Header";
+import BranchPanel from "@/components/BranchPanel";
 import { useDrafts } from "@/lib/useDrafts";
 import { generateTripletsForSubgenre, SUBGENRE_POOL_KEY, Triplet } from "@/lib/triplet-generator";
 import subgenrePools from "@/lib/subgenre-pools.json";
+import { GENRES } from "@/data/genres";
+import type { BranchSelection } from "@/data/genres";
 
 const STYLE_CATEGORIES = [
   {
@@ -187,19 +190,13 @@ const s = {
   }),
 };
 
-function getVariantForStyle(st: string): "purple" | "teal" {
-  const cat = STYLE_CATEGORIES.find(c => c.label === st || c.subs.includes(st));
-  return cat?.variant ?? "teal";
-}
-
 function buildVocalString(trackMode: TrackMode, gender: "male" | "female", range: string, tone: string): string {
   if (trackMode === "instrumental") return "";
   return `${tone.toLowerCase()} ${gender} ${range.toLowerCase()} vocal`;
 }
 
 export default function Home() {
-  const [activeStyles, setActiveStyles] = useState<string[]>(["Roots Disco Reggae"]);
-  const [openCat, setOpenCat] = useState<string | null>(null);
+  const [activeStyles, setActiveStyles] = useState<string[]>(["Disco Roots"]);
   const [key, setKey] = useState("Bb major");
   const [tempo, setTempo] = useState("One Drop (72–80 BPM)");
   const [intensity, setIntensity] = useState(3);
@@ -227,21 +224,16 @@ export default function Home() {
   const [inspireLoading, setInspireLoading] = useState(false);
   const [randomLoading, setRandomLoading] = useState(false);
   const { drafts, saveDraft, deleteDraft, toggleStar } = useDrafts();
-  const styleBlockRef = useRef<HTMLDivElement>(null);
 
   const compositionTitle = result.split("\n").find(l => /^#?\s*TITLE:/i.test(l))?.replace(/^#?\s*TITLE:/i, "").trim() || "";
   const instrumental = trackMode === "instrumental";
   const vocal = buildVocalString(trackMode, vocalGender, vocalRange, vocalTone);
 
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (styleBlockRef.current && !styleBlockRef.current.contains(e.target as Node)) {
-        setOpenCat(null);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  function handleBranchChange(sel: BranchSelection) {
+    const sub = GENRES[sel.genre].subgenres.find((s) => s.id === sel.subgenre)!;
+    setActiveStyles([sub.fullLabel]);
+    generateTriplets(sub.fullLabel);
+  }
 
   function generateTriplets(style: string) {
     const poolKey = SUBGENRE_POOL_KEY[style];
@@ -253,7 +245,7 @@ export default function Home() {
 
   function clearAll() {
     setResult(""); setCoverResult(""); setVideoResult("");
-    setTheme(""); setActiveStyles(["Roots Disco Reggae"]);
+    setTheme(""); setActiveStyles(["Disco Roots"]);
     setKey("Bb major"); setTempo("One Drop (72–80 BPM)");
     setIntensity(3); setMood("Roots");
     setInstruments(["Reggae Bass", "Skank Guitar", "Drum Kit"]);
@@ -261,7 +253,6 @@ export default function Home() {
     setVocalGender("male"); setVocalRange("Baritone"); setVocalTone("Warm");
     setCombos([]); setCombosForStyle("");
     setTriplets([]); setTripletsForStyle("");
-    setOpenCat(null);
   }
 
   function randomizeAll() {
@@ -358,24 +349,6 @@ export default function Home() {
     } finally {
       setRandomLoading(false);
     }
-  }
-
-  function toggleStyle(st: string) {
-    setActiveStyles(prev => {
-      if (prev.includes(st)) {
-        return prev.length > 1 ? prev.filter(x => x !== st) : prev;
-      }
-      if (prev.length >= 3) return prev;
-      return [...prev, st];
-    });
-  }
-
-  function removeStyle(st: string) {
-    setActiveStyles(prev => prev.length > 1 ? prev.filter(x => x !== st) : prev);
-  }
-
-  function isCatActive(cat: typeof STYLE_CATEGORIES[0]) {
-    return activeStyles.includes(cat.label) || cat.subs.some(sub => activeStyles.includes(sub));
   }
 
   function toggleInstrument(i: string) {
@@ -554,112 +527,12 @@ export default function Home() {
           </div>
 
           <div style={{ flex: 1, overflow: "auto", minHeight: 0 }}>
-            <div style={s.sectionLabel}>Branch</div>
-
-            <div ref={styleBlockRef} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5px", padding: "0 12px" }}>
-              {STYLE_CATEGORIES.map((cat) => {
-                const active = isCatActive(cat);
-                const isOpen = openCat === cat.id;
-                const v = cat.variant;
-                return (
-                  <div key={cat.id} style={{ position: "relative" }}>
-                    <div style={{
-                      display: "flex", borderRadius: "20px",
-                      border: `1px solid ${active ? (v === "purple" ? "var(--gold-dim)" : "#1D9E75") : "var(--border)"}`,
-                      background: active ? (v === "purple" ? "#1A1508" : "var(--green-deep)") : "var(--bg-card)",
-                      overflow: "hidden", transition: "all 0.15s",
-                    }}>
-                      <button
-                        onClick={() => { toggleStyle(cat.label); setOpenCat(null); }}
-                        style={{
-                          flex: 1, fontSize: "12px", padding: "6px 4px 6px 10px",
-                          background: "transparent", border: "none",
-                          color: active ? (v === "purple" ? "var(--gold)" : "var(--green-light)") : "var(--text-muted)",
-                          cursor: "pointer", textAlign: "left" as const,
-                          fontWeight: active ? 500 : 400, fontFamily: "'DM Sans', sans-serif",
-                          transition: "color 0.15s", whiteSpace: "nowrap" as const,
-                          overflow: "hidden", textOverflow: "ellipsis",
-                        }}
-                      >
-                        {cat.label}
-                      </button>
-                      <button
-                        onClick={() => setOpenCat(isOpen ? null : cat.id)}
-                        style={{
-                          width: "22px", background: "transparent", border: "none",
-                          borderLeft: `1px solid ${active ? (v === "purple" ? "var(--gold-dim)" : "#0F6E56") : "var(--border)"}`,
-                          color: active ? (v === "purple" ? "var(--gold)" : "var(--green-light)") : "var(--text-muted)",
-                          cursor: "pointer", fontSize: "9px",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          transition: "transform 0.15s",
-                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                          flexShrink: 0,
-                        }}
-                      >▾</button>
-                    </div>
-
-                    {isOpen && (
-                      <div style={{
-                        position: "absolute", top: "calc(100% + 3px)", left: 0, right: 0,
-                        background: "var(--bg-panel)", border: "1px solid var(--border)", borderRadius: "10px",
-                        zIndex: 50, overflow: "hidden", minWidth: "110px",
-                      }}>
-                        {cat.subs.map((sub, idx) => {
-                          const subActive = activeStyles.includes(sub);
-                          return (
-                            <button
-                              key={sub}
-                              onClick={() => { toggleStyle(sub); setOpenCat(null); }}
-                              style={{
-                                display: "block", width: "100%", textAlign: "left" as const,
-                                padding: "7px 12px",
-                                background: subActive ? (v === "purple" ? "#1A1508" : "var(--green-deep)") : "transparent",
-                                border: "none",
-                                borderBottom: idx < cat.subs.length - 1 ? "1px solid var(--border)" : "none",
-                                color: subActive ? (v === "purple" ? "var(--gold)" : "var(--green-light)") : "var(--text-muted)",
-                                fontSize: "12px", cursor: "pointer",
-                                fontFamily: "'DM Sans', sans-serif", transition: "all 0.1s",
-                              }}
-                            >{sub}</button>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div style={{ padding: "8px 12px 0", display: "flex", flexWrap: "wrap", gap: "5px" }}>
-              {activeStyles.map(st => {
-                const v = getVariantForStyle(st);
-                return (
-                  <div key={st} style={{
-                    display: "flex", alignItems: "center", gap: "4px",
-                    fontSize: "11px", padding: "3px 8px 3px 10px", borderRadius: "20px",
-                    border: `1px solid ${v === "purple" ? "var(--gold-dim)" : "#1D9E75"}`,
-                    background: v === "purple" ? "#1A1508" : "var(--green-deep)",
-                    color: v === "purple" ? "var(--gold)" : "var(--green-light)",
-                  }}>
-                    <span>{st}</span>
-                    <button onClick={() => removeStyle(st)} style={{
-                      background: "none", border: "none",
-                      color: v === "purple" ? "var(--gold-dim)" : "#3DAA85",
-                      cursor: "pointer", fontSize: "12px", lineHeight: 1,
-                      padding: "0 0 0 2px", display: "flex", alignItems: "center",
-                    }}>×</button>
-                  </div>
-                );
-              })}
-            </div>
-
-            {activeStyles.length >= 2 && (
-              <div style={{ margin: "6px 12px 0", padding: "7px 10px", background: "#1A1508", border: "1px solid var(--gold-dim)", borderRadius: "6px", fontSize: "11px", color: "var(--gold)" }}>
-                Blend mode — {activeStyles.length} branches active
-              </div>
-            )}
-
-            <div style={{ height: "1px", background: "var(--border)", margin: "12px 0" }} />
+            <BranchPanel
+              defaultGenre="hybrid"
+              defaultSubgenre="disco-roots"
+              onChange={handleBranchChange}
+            />
+            <div style={{ height: "1px", background: "var(--border)", margin: "0 0 12px" }} />
 
             {/* TRIPLET GENERATOR */}
             <div style={{ padding: "0 12px" }}>
