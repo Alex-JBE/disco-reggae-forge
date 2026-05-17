@@ -540,21 +540,24 @@ export default function Home() {
             {/* TRIPLET GENERATOR */}
             <div style={{ padding: "0 12px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
-                <div style={{ fontSize: "11px", letterSpacing: "0.12em", color: "var(--gold-dim)", textTransform: "uppercase" as const, fontWeight: 500 }}>
+                <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--gold-dim)", textTransform: "uppercase" as const, fontWeight: 500 }}>
                   Groove Triplets
                 </div>
                 <button
                   onClick={() => generateTriplets(activeStyles[0])}
                   style={{
-                    fontSize: "11px", padding: "4px 10px", borderRadius: "6px",
-                    border: "1px solid var(--green)",
-                    background: "var(--green-deep)",
-                    color: "var(--green-light)",
+                    fontSize: "11px", padding: "5px 12px", borderRadius: "20px",
+                    border: "1px solid var(--gold)",
+                    background: "#1A1508",
+                    color: "var(--gold)",
                     cursor: "pointer",
-                    fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: "0.04em",
+                    transition: "all 0.2s",
                   }}
                 >
-                  ↻ Generate
+                  ✦ Generate
                 </button>
               </div>
 
