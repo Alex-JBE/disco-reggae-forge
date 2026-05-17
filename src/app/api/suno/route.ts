@@ -55,7 +55,7 @@ LYRICS:
 [Formatted lyrics with Suno section tags. Keep original language. Include dub directions in square brackets like [Dub break - bass only]. If instrumental, write [Instrumental] and describe key musical moments.]`;
 
     const stream = await anthropic.messages.stream({
-      model: "claude-sonnet-4-5",
+      model: "claude-sonnet-4-6",
       max_tokens: 3000,
       messages: [{ role: "user", content: prompt }],
     });

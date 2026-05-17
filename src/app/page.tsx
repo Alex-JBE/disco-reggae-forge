@@ -197,6 +197,7 @@ function buildVocalString(trackMode: TrackMode, gender: "male" | "female", range
 
 export default function Home() {
   const [activeStyles, setActiveStyles] = useState<string[]>(["Disco Roots"]);
+  const [branchResetKey, setBranchResetKey] = useState(0);
   const [key, setKey] = useState("Bb major");
   const [tempo, setTempo] = useState("One Drop (72–80 BPM)");
   const [intensity, setIntensity] = useState(3);
@@ -253,6 +254,7 @@ export default function Home() {
     setVocalGender("male"); setVocalRange("Baritone"); setVocalTone("Warm");
     setCombos([]); setCombosForStyle("");
     setTriplets([]); setTripletsForStyle("");
+    setBranchResetKey(k => k + 1); // force BranchPanel remount → resets to defaults
   }
 
   function randomizeAll() {
@@ -528,6 +530,7 @@ export default function Home() {
 
           <div style={{ flex: 1, overflow: "auto", minHeight: 0 }}>
             <BranchPanel
+              key={branchResetKey}
               defaultGenre="hybrid"
               defaultSubgenre="disco-roots"
               onChange={handleBranchChange}

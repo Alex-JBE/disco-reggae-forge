@@ -6,7 +6,7 @@ const anthropic = new Anthropic({
 
 export async function generateJazz(prompt: string): Promise<string> {
   const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-5",
+    model: "claude-sonnet-4-6",
     max_tokens: 2048,
     messages: [{ role: "user", content: prompt }],
   });
@@ -21,7 +21,7 @@ export async function generateJazzStream(
   onChunk: (chunk: string) => void
 ): Promise<void> {
   const stream = await anthropic.messages.stream({
-    model: "claude-sonnet-4-5",
+    model: "claude-sonnet-4-6",
     max_tokens: 2048,
     messages: [{ role: "user", content: prompt }],
   });
