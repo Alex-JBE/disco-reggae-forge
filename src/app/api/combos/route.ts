@@ -6,30 +6,30 @@ const anthropic = new Anthropic({
 });
 
 const ALL_STYLES = [
-  "Roots Disco Reggae",
-  "Lovers Disco Reggae",
-  "Dub Disco Reggae",
-  "Cosmic Disco Reggae",
-  "Synth Disco Reggae",
-  "Sunset Reggae Dance",
-  "Boogie Reggae",
-  "Percussion Disco Reggae",
-  "Dancehall-Disco Crossover",
-  "Yacht Reggae Disco",
-  "Afro-Disco Reggae",
-  "Club Dub Disco",
+  // Reggae
+  "Roots Reggae", "Lovers Rock", "Dub", "Rockers Reggae", "Steppers",
+  // Disco
+  "Classic Disco", "Italo Disco", "Boogie", "Hi-NRG", "Cosmic Disco",
+  // Hybrid
+  "Disco Roots", "Disco Dub", "Lovers Glow", "Steppers Funk", "Sunset Pop",
+  // Funk
+  "P-Funk", "Disco Funk", "Jazz Funk", "Synth Funk", "Modern Funk",
+  // Soul
+  "Philly Soul", "Northern Soul", "Modern Soul", "Quiet Storm", "Blue-Eyed Soul",
+  // Pop
+  "Dance Pop", "Synth Pop", "Yacht Pop", "Sunshine Pop", "Art Pop",
 ];
 
 export async function POST(req: NextRequest) {
   try {
     const { style } = await req.json();
 
-    const prompt = `You are a disco-reggae music expert. Given the branch "${style}", suggest exactly 6 creative branch combinations (2-3 branches blended) that would work well together.
+    const prompt = `You are a music production expert specialising in disco, reggae, funk, soul and pop fusion. Given the branch "${style}", suggest exactly 10 creative branch combinations (2-3 branches blended) that would work well together.
 
 Rules:
 - Each combo must include "${style}" as one of the branches
 - The other branches must be chosen ONLY from this list: ${ALL_STYLES.join(", ")}
-- Each combo should have a different sonic character
+- Each combo should have a distinct sonic character — vary the mood, tempo feel, and instrumentation across the 10
 - Give each combo a short evocative label (2-3 words max) and a relevant emoji
 
 Respond with ONLY valid JSON, no markdown, no explanation:
@@ -40,13 +40,17 @@ Respond with ONLY valid JSON, no markdown, no explanation:
     { "icon": "🔊", "label": "Bass Pressure", "styles": ["${style}", "Style2"] },
     { "icon": "🕺", "label": "Floor Ready", "styles": ["${style}", "Style2"] },
     { "icon": "🌊", "label": "Deep Wave", "styles": ["${style}", "Style2", "Style3"] },
-    { "icon": "🌍", "label": "World Groove", "styles": ["${style}", "Style2"] }
+    { "icon": "🌍", "label": "World Groove", "styles": ["${style}", "Style2"] },
+    { "icon": "🔥", "label": "Hot Riddim", "styles": ["${style}", "Style2"] },
+    { "icon": "🌙", "label": "Night Shift", "styles": ["${style}", "Style2", "Style3"] },
+    { "icon": "⚡", "label": "Electric Cut", "styles": ["${style}", "Style2"] },
+    { "icon": "🎭", "label": "Velvet Push", "styles": ["${style}", "Style2"] }
   ]
 }`;
 
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 800,
+      max_tokens: 1200,
       messages: [{ role: "user", content: prompt }],
     });
 

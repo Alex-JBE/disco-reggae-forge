@@ -540,20 +540,21 @@ export default function Home() {
             />
             <div style={{ height: "1px", background: "var(--border)", margin: "0 0 12px" }} />
 
-            {/* TRIPLET GENERATOR */}
+            {/* STYLE COMBOS */}
             <div style={{ padding: "0 12px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
                 <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--gold-dim)", textTransform: "uppercase" as const, fontWeight: 500 }}>
-                  Groove Triplets
+                  Style Combos
                 </div>
                 <button
-                  onClick={() => generateTriplets(activeStyles[0])}
+                  onClick={findCombos}
+                  disabled={combosLoading}
                   style={{
                     fontSize: "11px", padding: "5px 14px", borderRadius: "20px",
-                    border: "1px solid var(--gold)",
-                    background: "#1A1508",
-                    color: "var(--gold)",
-                    cursor: "pointer",
+                    border: `1px solid ${combosLoading ? "var(--border)" : "var(--gold)"}`,
+                    background: combosLoading ? "var(--bg-card)" : "#1A1508",
+                    color: combosLoading ? "var(--text-muted)" : "var(--gold)",
+                    cursor: combosLoading ? "not-allowed" : "pointer",
                     fontFamily: "'DM Sans', sans-serif",
                     fontWeight: 500,
                     letterSpacing: "0.04em",
@@ -561,82 +562,19 @@ export default function Home() {
                     whiteSpace: "nowrap" as const,
                   }}
                 >
-                  ✦ Find for {activeStyles[0]}
-                </button>
-              </div>
-
-              {triplets.length === 0 && (
-                <div style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" as const, padding: "14px 0" }}>
-                  Pick a branch above, then click Find
-                </div>
-              )}
-
-              {triplets.length > 0 && (
-                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                  {triplets.slice(0, 8).map((triplet, i) => (
-                    <button
-                      key={i}
-                      onClick={() => {
-                        setTheme(triplet.label);
-                        setMood(triplet.mood);
-                      }}
-                      style={{
-                        fontSize: "11px", padding: "6px 8px", borderRadius: "6px",
-                        border: "1px solid var(--border)",
-                        background: "var(--bg-card)",
-                        color: "var(--text-secondary)",
-                        cursor: "pointer", transition: "all 0.15s",
-                        fontFamily: "'DM Mono', monospace",
-                        textAlign: "left" as const,
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--green)"; e.currentTarget.style.color = "var(--green-light)"; }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.color = "var(--text-secondary)"; }}
-                    >
-                      {triplet.label}
-                    </button>
-                  ))}
-                  {tripletsForStyle && (
-                    <div style={{ fontSize: "10px", color: "var(--text-muted)", textAlign: "center" as const, paddingTop: "4px" }}>
-                      for {tripletsForStyle}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div style={{ height: "1px", background: "var(--border)", margin: "12px 0" }} />
-
-            {/* STYLE COMBOS */}
-            <div style={{ padding: "0 12px" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
-                <div style={{ fontSize: "11px", letterSpacing: "0.12em", color: "var(--gold-dim)", textTransform: "uppercase" as const, fontWeight: 500 }}>
-                  Branch Combos
-                </div>
-                <button
-                  onClick={findCombos}
-                  disabled={combosLoading}
-                  style={{
-                    fontSize: "11px", padding: "4px 10px", borderRadius: "6px",
-                    border: `1px solid ${combosLoading ? "var(--border)" : "var(--gold)"}`,
-                    background: combosLoading ? "var(--bg-card)" : "#1A1508",
-                    color: combosLoading ? "var(--text-muted)" : "var(--gold)",
-                    cursor: combosLoading ? "not-allowed" : "pointer",
-                    fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s",
-                  }}
-                >
                   {combosLoading ? "Finding..." : `✦ Find for ${activeStyles[0]}`}
                 </button>
               </div>
 
               {combos.length === 0 && !combosLoading && (
-                <div style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" as const, padding: "12px 0" }}>
+                <div style={{ fontSize: "11px", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" as const, padding: "14px 0" }}>
                   Pick a branch above, then click Find
                 </div>
               )}
 
               {combosLoading && (
-                <div style={{ fontSize: "11px", color: "var(--gold-dim)", textAlign: "center" as const, padding: "12px 0" }}>
-                  <span style={{ color: "var(--gold)" }}>●</span> Generating combos for {combosForStyle}...
+                <div style={{ fontSize: "11px", color: "var(--gold-dim)", textAlign: "center" as const, padding: "14px 0" }}>
+                  <span style={{ color: "var(--gold)" }}>●</span> Finding combos for {combosForStyle}...
                 </div>
               )}
 
@@ -649,7 +587,7 @@ export default function Home() {
                         key={combo.label}
                         onClick={() => setActiveStyles(combo.styles)}
                         style={{
-                          fontSize: "11px", padding: "7px 8px", borderRadius: "8px",
+                          fontSize: "11px", padding: "8px 10px", borderRadius: "10px",
                           border: `1px solid ${isActive ? "var(--gold)" : "var(--border)"}`,
                           background: isActive ? "#1A1508" : "var(--bg-card)",
                           color: isActive ? "var(--gold)" : "var(--text-muted)",
@@ -658,8 +596,8 @@ export default function Home() {
                           textAlign: "left" as const,
                         }}
                       >
-                        <div style={{ marginBottom: "2px" }}>{combo.icon} {combo.label}</div>
-                        <div style={{ fontSize: "10px", opacity: 0.6, lineHeight: 1.3 }}>
+                        <div style={{ marginBottom: "3px", fontWeight: 500 }}>{combo.icon} {combo.label}</div>
+                        <div style={{ fontSize: "10px", opacity: 0.6, lineHeight: 1.4 }}>
                           {combo.styles.join(" · ")}
                         </div>
                       </button>
