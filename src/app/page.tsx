@@ -120,6 +120,7 @@ const LANGUAGES = [
   "German", "Italian", "Arabic", "Hindi", "Chinese", "Turkish", "Hebrew",
   "Dutch", "Swedish", "Norwegian", "Danish", "Finnish", "Polish", "Czech",
   "Hungarian", "Romanian", "Greek", "Ukrainian", "Catalan", "Serbian", "Amharic",
+  "Twi",
 ];
 
 type Combo = { icon: string; label: string; styles: string[] };
