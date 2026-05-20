@@ -95,3 +95,14 @@ Generate the FULL PACKAGE:
 
 Generate now.`;
 }
+
+export function buildPromptParts(params: Parameters<typeof buildPrompt>[0]): { system: string; user: string } {
+  const sep = "---\nREQUEST:";
+  const full = buildPrompt(params);
+  const idx = full.indexOf(sep);
+  if (idx === -1) return { system: DISCO_REGGAE_SYSTEM_PROMPT, user: full };
+  return {
+    system: full.slice(0, idx).trim(),
+    user: full.slice(idx).trim(),
+  };
+}

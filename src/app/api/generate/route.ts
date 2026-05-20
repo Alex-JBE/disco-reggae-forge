@@ -1,14 +1,10 @@
 import { NextRequest } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { prompt } = body;
+    const { prompt, system } = body;
 
     if (!prompt) {
       return new Response(JSON.stringify({ error: "Prompt is required" }), {
@@ -17,24 +13,29 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
     const stream = await anthropic.messages.stream({
       model: "claude-sonnet-4-6",
       max_tokens: 8192,
+      ...(system && {
+        system: [{ type: "text" as const, text: system, cache_control: { type: "ephemeral" as const } }],
+      }),
       messages: [{ role: "user", content: prompt }],
     });
 
     const encoder = new TextEncoder();
     const readable = new ReadableStream({
       async start(controller) {
-        for await (const chunk of stream) {
-          if (
-            chunk.type === "content_block_delta" &&
-            chunk.delta.type === "text_delta"
-          ) {
-            controller.enqueue(encoder.encode(chunk.delta.text));
+        try {
+          for await (const chunk of stream) {
+            if (chunk.type === "content_block_delta" && chunk.delta.type === "text_delta") {
+              controller.enqueue(encoder.encode(chunk.delta.text));
+            }
           }
+        } finally {
+          controller.close();
         }
-        controller.close();
       },
     });
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { buildPrompt } from "@/prompts/base-prompt";
+import { buildPrompt, buildPromptParts } from "@/prompts/base-prompt";
 import ResultPanel from "@/components/ResultPanel";
 import DraftsPanel from "@/components/DraftsPanel";
 import CoverPanel from "@/components/CoverPanel";
@@ -399,7 +399,7 @@ export default function Home() {
     setLoading(true); setIsStreaming(true);
     setResult(""); setCoverResult(""); setVideoResult("");
     try {
-      const prompt = buildPrompt({
+      const { system, user } = buildPromptParts({
         styles: activeStyles, key, tempo,
         intensity: INTENSITY_LABELS[intensity],
         mood,
@@ -408,7 +408,7 @@ export default function Home() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ system, prompt: user }),
       });
       if (!res.ok || !res.body) { setResult("Generation failed"); return; }
       const reader = res.body.getReader();
